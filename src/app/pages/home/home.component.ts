@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../../services/books.service';
 
-interface Book {
+export interface Book {
   title: string;
   author: string;
   age: number;

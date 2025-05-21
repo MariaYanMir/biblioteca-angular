@@ -1,7 +1,6 @@
 <ul *ngIf="filteredBooks.length > 0; else noLibros">
-    <li *ngFor="let book of filteredBooks"> {{ book.title }} <button aria-label="Clear" (click)="removeBook(book)">
-            <mat-icon>close</mat-icon>
-        </button></li>
+    <li *ngFor="let book of filteredBooks"> <app-libro [book]="book" (removedBook)="removeBook($event)"></app-libro>
+    </li>
 </ul>
 <ng-template #noLibros>
     <p>No hay libros.</p>
