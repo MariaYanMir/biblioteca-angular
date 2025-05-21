@@ -1,1 +1,16 @@
-<p>home works!</p>
+<ul *ngIf="filteredBooks.length > 0; else noLibros">
+    <li *ngFor="let book of filteredBooks"> {{ book.title }} <button aria-label="Clear" (click)="removeBook(book)">
+            <mat-icon>close</mat-icon>
+        </button></li>
+</ul>
+<ng-template #noLibros>
+    <p>No hay libros.</p>
+</ng-template>
+
+<mat-form-field class="example-form-field">
+    <input matInput type="text" [(ngModel)]="search" (ngModelChange)="filterBooks($event)">
+    <button aria-label="Clear" (click)="search = ''; filterBooks('')">
+        <mat-icon>close</mat-icon>
+    </button>
+</mat-form-field>
+<p *ngIf=" search"> Estás buscando {{search}}</p>
